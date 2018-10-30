@@ -18,6 +18,10 @@ set(SRCS
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
+if(CMAKE_CUDA_COMPILER)
+    add_subdirectory(cuda)
+endif()
+
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(performance_tests_options INTERFACE)
 target_compile_features(performance_tests_options INTERFACE cxx_std_11)
